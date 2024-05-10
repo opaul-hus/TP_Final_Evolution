@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="UIL.UCInitial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Background Image -->
+        <Image Source="Images/back.png" />
+
+        <!-- Three Lines of Text -->
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock Text=" Réalisé 
+par : Olivier Paul-Hus" FontSize="20" Foreground="Black"/>
+            <TextBlock Text="1156001" FontSize="20" Foreground="Black"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
+
+            <TextBlock Text="Source de 
+données : Statistique Canada et Wikipédia (moyennant des modifications)" FontSize="12" Foreground="Red" FontStyle="Italic"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

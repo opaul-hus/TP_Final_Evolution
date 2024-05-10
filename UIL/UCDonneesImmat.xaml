@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="UIL.UCDonneesImmat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:bll="clr-namespace:BLL;assembly=BLL"
+             
+             xmlns:local="clr-namespace:UIL"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <ObjectDataProvider x:Key="ObjDataProviderProv" ObjectType="{x:Type bll:CodePr}"
+                            MethodName="GetNames">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="bll:CodePr"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="ObjDataProviderGenre" ObjectType="{x:Type bll:CodeGen}"
+                         MethodName="GetNames">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="bll:CodeGen"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="ObjDataProviderCarb" ObjectType="{x:Type bll:CodeCarb}"
+                         MethodName="GetNames">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="bll:CodeCarb"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <DockPanel>
+       
+
+        
+
+        <StackPanel Grid.Row="1" Margin="10">
+            <!-- Combo Boxes -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Critere de tri"  Margin="10"/>
+                <ComboBox x:Name="comboBox1" Width="150" Margin="0 0 0 10" SelectionChanged="comboBox1_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Ordre de Tri"  Margin="10"/>
+                <ComboBox x:Name="comboBox2" Width="150" Margin="0 0 0 10" SelectionChanged="comboBox2_SelectionChanged"/>
+            </StackPanel>
+            <DataGrid x:Name="dgImat" AutoGenerateColumns="False" 
+                      RowBackground="Khaki" AlternatingRowBackground="Lavender" Width="744">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="DgCNb" Header="Nombre d'imatriculations"  Width="2*" Binding="{Binding NbreImmats}"/>
+                    <DataGridTextColumn x:Name="DgCAn" Header="Annee" Width="*" Binding="{Binding Annee}"/>
+                    <DataGridComboBoxColumn Header="CodePr" Width="*" SelectedItemBinding="{Binding CodePr}"
+                                            ItemsSource="{Binding Source={StaticResource ObjDataProviderProv}}"/>
+                    <DataGridComboBoxColumn Header="CodeCarb" Width="*" TextBinding="{Binding CodeCarb}"
+                                            ItemsSource="{Binding Source={StaticResource ObjDataProviderCarb}}"/>
+                    <DataGridComboBoxColumn Header="CodeGenre" Width="*" TextBinding="{Binding CodeGen}"
+                                            ItemsSource="{Binding Source={StaticResource ObjDataProviderGenre}}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- DataGrid -->
+        </StackPanel>
+    </DockPanel>
+</UserControl>
